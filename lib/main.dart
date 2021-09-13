@@ -9,7 +9,7 @@ import 'package:coneg_panel_user/widget/predictionData.dart';
 import 'package:coneg_panel_user/widget/usageData.dart';
 import 'package:coneg_panel_user/widget/weeklyData.dart';
 import 'package:flutter/foundation.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
@@ -32,82 +32,87 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        title: "ConEg PaTra - ConEg Painel da Transparência",
+        theme: ThemeData(
+            splashColor: Color(0xFF1F41B4),
+            textTheme: GoogleFonts.ubuntuTextTheme(),
+            canvasColor: Colors.black54),
         home: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF23A39B),
-        title: Padding(
-          padding: EdgeInsets.all(60),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Stack(
-                children: <Widget>[
-                  // Stroked text as border.
-                  Text(
-                    "ConEg",
-                    style: TextStyle(
-                      fontSize: 25,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 6
-                        ..color = ConegDesign().getBlue(),
+          appBar: AppBar(
+            backgroundColor: Color(0xFF23A39B),
+            title: Padding(
+              padding: EdgeInsets.all(60),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(
+                    children: <Widget>[
+                      // Stroked text as border.
+                      Text(
+                        "ConEg",
+                        style: TextStyle(
+                          fontSize: 25,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 6
+                            ..color = ConegDesign().getBlue(),
+                        ),
+                      ),
+                      // Solid text as fill.
+                      Text(
+                        "ConEg",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    child: Image.asset(
+                      'assets/images/ConEg.png',
+                      height: 50,
+                      width: 50,
                     ),
                   ),
-                  // Solid text as fill.
-                  Text(
-                    "ConEg",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.grey[300],
-                    ),
+                  Stack(
+                    children: <Widget>[
+                      // Stroked text as border.
+                      Text(
+                        "PaTra",
+                        style: TextStyle(
+                          fontSize: 25,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 6
+                            ..color = ConegDesign().getBlue(),
+                        ),
+                      ),
+                      // Solid text as fill.
+                      Text(
+                        "PaTra",
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Image.asset(
-                  'assets/images/ConEg.png',
-                  height: 50,
-                  width: 50,
-                ),
-              ),
-              Stack(
-                children: <Widget>[
-                  // Stroked text as border.
-                  Text(
-                    "PaTra",
-                    style: TextStyle(
-                      fontSize: 25,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 6
-                        ..color = ConegDesign().getBlue(),
-                    ),
-                  ),
-                  // Solid text as fill.
-                  Text(
-                    "PaTra",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.grey[300],
-                    ),
-                  ),
-                ],
-              ),
-            ],
+              // RiveAnimation.asset(
+              //   'assets/coneg_gif.riv',
+              // )
+            ),
+            centerTitle: true,
           ),
-          // RiveAnimation.asset(
-          //   'assets/coneg_gif.riv',
-          // )
-        ),
-        centerTitle: true,
-      ),
-      backgroundColor: Color(0xFF006E68),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: DashboardUser(),
-      ),
-    ));
+          backgroundColor: Color(0xFF006E68),
+          body: Padding(
+            padding: const EdgeInsets.all(10),
+            child: DashboardUser(),
+          ),
+        ));
   }
 }
 

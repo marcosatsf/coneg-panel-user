@@ -1,16 +1,12 @@
-# coneg_panel_user
+# ConEg-Panel-User
+### A.K.A ConEg PaTra (ConEg Painel da Transparência)
 
-A new Flutter project.
+User Dashboard Web/Android Application for ConEg project written in Dart language with Flutter Framework.
 
-## Getting Started
+![](https://github.com/marcosatsf/coneg-panel-user/blob/master/git_images/panel_user_working.gif)
+> ConEg User Panel working with automatic updates
 
-This project is a starting point for a Flutter application.
+As the above example, this is a dashboard accessible for anyone from one organization/institute which has ConEg system installed.
+While a module is not yet configured or is expected to be empty, a ConEg animation will be used as placeholder 😎👌
+It can be accessed from a desktop (nice to show information on a common area) or even from a mobile in order to check more details from specific modules.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

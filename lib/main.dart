@@ -37,10 +37,64 @@ class Home extends StatelessWidget {
         backgroundColor: Color(0xFF23A39B),
         title: Padding(
           padding: EdgeInsets.all(60),
-          child: Image.asset(
-            'assets/images/ConEg.png',
-            height: 50,
-            width: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                children: <Widget>[
+                  // Stroked text as border.
+                  Text(
+                    "ConEg",
+                    style: TextStyle(
+                      fontSize: 25,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 6
+                        ..color = ConegDesign().getBlue(),
+                    ),
+                  ),
+                  // Solid text as fill.
+                  Text(
+                    "ConEg",
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.grey[300],
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20, right: 20),
+                child: Image.asset(
+                  'assets/images/ConEg.png',
+                  height: 50,
+                  width: 50,
+                ),
+              ),
+              Stack(
+                children: <Widget>[
+                  // Stroked text as border.
+                  Text(
+                    "PaTra",
+                    style: TextStyle(
+                      fontSize: 25,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 6
+                        ..color = ConegDesign().getBlue(),
+                    ),
+                  ),
+                  // Solid text as fill.
+                  Text(
+                    "PaTra",
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.grey[300],
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
           // RiveAnimation.asset(
           //   'assets/coneg_gif.riv',
@@ -103,7 +157,6 @@ class _DashboardUserState extends State<DashboardUser> {
 
   void _buildWidgets(bool option) async {
     DateTime now = DateTime.now();
-    // TODO request is possibly working but we need to build widgets
     List<Widget> tmpConstructor = List.empty(growable: true);
     String tmpString;
     List<String> tmpListString = List.empty(growable: true);
@@ -111,35 +164,55 @@ class _DashboardUserState extends State<DashboardUser> {
       List<String> tmpModule = _buildPkt[coord]['module'].split(".");
       print(tmpModule);
 
-      if (tmpModule[1] == 'timeseries' || tmpModule[1] == 'allinfodata')
-        // NEW PUBLIC ROUTE TO RETRIEVE DATA
-        tmpString = "${DateFormat('dd/MM/yyyy').format(now)}.${tmpModule[1]}";
+      if (_buildPkt[coord]['module'] == '-')
+        tmpString = 'Vazio';
       else {
-        if (_buildPkt[coord]['module'] == '-')
-          tmpString = 'Vazio';
-        else
+        if (tmpModule[1] == 'timeseries' || tmpModule[1] == 'allinfodata')
+          tmpString = "${DateFormat('dd/MM/yyyy').format(now)}.${tmpModule[1]}";
+        else {
           tmpString = '${tmpModule[0]}.${tmpModule[1]}';
+        }
       }
+
       tmpListString.add(tmpString);
     }
     res = await RequestConeg()
         .getJsonListQuery(endpoint: '/data_to_user', query: tmpListString);
 
+    tmpConstructor.add(Container(
+      decoration: BoxDecoration(
+          color: Color(0xFF17DFD3),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          border: Border.all(width: 5, color: Color(0xFF23A39B))),
+      child: Text(
+        'CM : Cadastrado com Máscara',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+    ));
+    tmpConstructor.add(Container(
+      decoration: BoxDecoration(
+          color: Color(0xFF17DFD3),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          border: Border.all(width: 5, color: Color(0xFF23A39B))),
+      child: Text(
+        'DSM : Descadastrado sem Máscara',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+    ));
+    tmpConstructor.add(Container(
+      decoration: BoxDecoration(
+          color: Color(0xFF17DFD3),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          border: Border.all(width: 5, color: Color(0xFF23A39B))),
+      child: Text(
+        'CSM : Cadastrado sem Máscara',
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+    ));
+
     for (var coord in _buildPkt.keys) {
       if (_buildPkt[coord]['name'] != 'Vazio') {
         List<String> tmpModule = _buildPkt[coord]['module'].split(".");
-        // print(tmpModule);
-
-        // if (tmpModule[1] == 'timeseries' || tmpModule[1] == 'allinfodata')
-        //   // NEW PUBLIC ROUTE TO RETRIEVE DATA
-        //   res = await RequestConeg().getJsonListQuery(
-        //       endpoint: '/data_to_user',
-        //       query: [DateFormat('dd/MM/yyyy').format(now), tmpModule[1]]);
-        // else
-        //   res = await RequestConeg()
-        //       .getJsonListQuery(endpoint: '/data_to_user', query: tmpModule);
-        // print(res);
-        //Actually building widgets
         switch (tmpModule[1]) {
           case 'weeklydata':
             tmpConstructor.add(_buildContainer(

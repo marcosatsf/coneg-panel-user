@@ -2,7 +2,7 @@
     package="com.example.coneg_panel_user">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="ConEg Painel da Transparência"
+        android:label="ConEg PaTra"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
         <activity

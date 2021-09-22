@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
 class RequestConeg {
-  static final String route = 'http://localhost:5000';
+  static final String route = 'http://34.75.48.156:5000';
   int lastStatusCode;
 
   Uri _generateUri(String end) {

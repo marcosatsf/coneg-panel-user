@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
                       Text(
                         "ConEg",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 6
@@ -62,7 +62,7 @@ class Home extends StatelessWidget {
                       Text(
                         "ConEg",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           color: Colors.grey[300],
                         ),
                       ),
@@ -82,7 +82,7 @@ class Home extends StatelessWidget {
                       Text(
                         "PaTra",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 6
@@ -93,7 +93,7 @@ class Home extends StatelessWidget {
                       Text(
                         "PaTra",
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           color: Colors.grey[300],
                         ),
                       ),
